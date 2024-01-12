@@ -1,13 +1,13 @@
 import os
 
-from fastapi import FastAPI, Request, Form, UploadFile
+from fastapi import FastAPI, Request, Form
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import HTMLResponse
 
-from api.newPostUpload import add_post_to_json
-from api.getPostsList import get_posts_from_json
-from api.getPostById import get_post_by_id
+from app.api.newPostUpload import add_post_to_json
+from app.api.getPostsList import get_posts_from_json
+from app.api.getPostById import get_post_by_id
 
 from pathlib import Path
 
@@ -15,11 +15,11 @@ app = FastAPI()
 
 app.mount(
     "/static",
-    StaticFiles(directory=Path(__file__).parent.parent.absolute() / "./static"),
-    name= "static"
+    StaticFiles(directory="./static"),
+    name="static"
 )
 
-templates = Jinja2Templates(directory="../templates")
+templates = Jinja2Templates(directory="./templates")
 
 
 
@@ -44,14 +44,14 @@ async def postUploadPage(request: Request):
 @app.post("/postUpload", response_class=HTMLResponse)
 async def postUpload(request: Request, writer: str = Form(...), title: str = Form(...), content: str = Form(...)):
 
-    add_post_to_json("./db/post_data.json", writer, title, content)
+    add_post_to_json("./app/db/post_data.json", writer, title, content)
     return templates.TemplateResponse("postUploadCompletedPage.html", {"request": request, "title": title, "content": content})
 
 
 @app.get("/community")
 async def communityPage(request: Request):
 
-    posts = get_posts_from_json("./db/post_data.json")
+    posts = get_posts_from_json("./app/db/post_data.json")
 
     return templates.TemplateResponse("communityPage.html", {"request": request, "posts": posts})
 
