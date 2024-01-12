@@ -62,6 +62,6 @@ def read_post(request: Request, post_id: str):
     if post:
         return templates.TemplateResponse("postDetail.html", {"request": request, "post": post})
     else:
-        return {"message": "게시물을 찾을 수 없습니다."}
+        return templates.TemplateResponse("postDetail.html", {"request": request, "post": {"message": "게시물을 찾을 수 없습니다."}})
 
 # uvicorn main:app --reload
