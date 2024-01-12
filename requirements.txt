@@ -23,7 +23,6 @@ mdurl==0.1.2
 mysql-connector-python==8.0.32
 packaging==23.2
 pefile==2023.2.7
-protobuf==3.20.3
 py2exe==0.13.0.1
 pycparser==2.21
 pydantic==1.10.7
