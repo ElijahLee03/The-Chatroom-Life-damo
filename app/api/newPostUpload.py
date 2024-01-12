@@ -2,7 +2,7 @@ import os
 import json
 import time
 
-def add_post_to_json(jsonPath, writer, new_title, new_content):
+def add_post_to_json(jsonPath, writer, new_title, new_content, password):
     try:
         # 기존 JSON 파일 읽어오기
         with open(jsonPath, 'r', encoding='utf-8') as json_file:
@@ -16,7 +16,8 @@ def add_post_to_json(jsonPath, writer, new_title, new_content):
         "writer": writer,
         "time": time.strftime('%Y-%m-%d_%H_%M_%S'),
         "title": new_title,
-        "content": new_content
+        "content": new_content,
+        "password": password
     }
     data.append(new_post)
 

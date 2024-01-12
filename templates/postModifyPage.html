@@ -28,26 +28,26 @@
         <h4 class="text-center">글을 작성하는 공간입니다.</h4>
         
         <div id="write_area">
-            <form action="/postUpload" method="post">
+            <form action="/postUpdate/{{ post.time }}" method="post">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Writer</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="writer" name="writer">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="writer" name="writer" value="{{ post.writer }}">
                 </div>
                 
                 <label for="inputPassword5" class="form-label">Password</label>
-                <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" name="password">
+                <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" name="password" value="{{ post.password }}">
                 <div id="passwordHelpBlock" class="form-text">
                 Password는 해당 게시물을 수정, 삭제할때 사용됩니다.
                 </div>
                 
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title" name="title">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title" name="title" value="{{ post.title }}">
                 </div>
 
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">textarea</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content">{{ post.content }}</textarea>
                 </div>
 
                  

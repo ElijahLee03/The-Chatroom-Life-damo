@@ -24,37 +24,23 @@
     </nav>
     <!-- Page Content-->
     <div class="mx-auto mt-5" style="width: 700px;">
+      <form action="/postDeleteRR/{{ post_password }}" method="post">
 
-        <h4 class="text-center">글을 작성하는 공간입니다.</h4>
-        
-        <div id="write_area">
-            <form action="/postUpload" method="post">
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Writer</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="writer" name="writer">
-                </div>
-                
-                <label for="inputPassword5" class="form-label">Password</label>
-                <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" name="password">
-                <div id="passwordHelpBlock" class="form-text">
-                Password는 해당 게시물을 수정, 삭제할때 사용됩니다.
-                </div>
-                
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Title" name="title">
-                </div>
-
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">textarea</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
-                </div>
-
-                 
-                <button type="submit" class="btn btn-secondary">Submit</button>
-            </form>
+        <div class="card mx-auto p-2" style="width: 18rem;">
+          <div class="card-body">
+            <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm" aria-label=".form-control-sm example" value="{{ post_id }}" name="post_id">
+            <h5 class="card-title">정말 삭제하시겠습니까?</h5>
+            <p class="card-text">삭제를 원하시면 아래에 게시물의 비밀번호를 넣어주세요.</p>
+            <div class="form-floating">
+              <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+              <label for="floatingPassword">Password</label>
+            <h6 class="card-subtitle mb-2 text-body-secondary">삭제된 게시물을 복구되지 않습니다.</h6>
+            <button type="submit" class="btn btn-danger">삭제</button>
+            <a href="/community" class="card-link">커뮤니티로</a>
+            <a href="/" class="card-link">홈으로</a>
+          </div>
         </div>
-
+      </form>
     </div>
     <!-- <div class="container px-4 px-lg-5 mt-5">
         <div class="input-group mb-3">
